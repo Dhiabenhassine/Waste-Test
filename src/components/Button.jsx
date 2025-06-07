@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ToggleSwitch.css"; 
 
 export const ConfirmButton=() =>{
   return (
@@ -33,3 +34,27 @@ export const CardButton=({onSelect, isSelected})=>{
         </div>
     )
 }
+export const ToggleSwitch = ({ onSelect, isSelected }) => {
+  return (
+    <div className="toggle-container">
+      <input
+        className="toggle-input"
+        type="checkbox"
+        checked={isSelected} // <-- this controls the checkbox state
+        onChange={(e) => onSelect(e.target.checked)} // <-- call the parent handler
+      />
+      <div className="toggle-handle-wrapper">
+        <div className="toggle-handle">
+          <div className="toggle-handle-knob"></div>
+          <div className="toggle-handle-bar-wrapper">
+            <div className="toggle-handle-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div className="toggle-base">
+        <div className="toggle-base-inside"></div>
+      </div>
+    </div>
+  );
+};
+

@@ -1,5 +1,6 @@
 import React from "react";
 
+/*
 const NavHeader = () => {
   return (
     <div className="w-full bg-[#111] py-2 px-2 overflow-x-auto">
@@ -105,6 +106,73 @@ const NavHeader = () => {
             <div className="w-6 h-px bg-[#2A2A2A] hidden sm:block"></div>
           </React.Fragment>
         ))}
+      </div>
+    </div>
+  );
+};
+*/
+// NavHeader.jsx or NavHeader.tsx (if using TypeScript)
+import {
+  Check,
+} from "lucide-react"; // Only importing used icon
+
+const steps = [
+  { id: 1, name: "Postcode", icon: "📍", completed: true },
+  { id: 2, name: "Waste Type", icon: "🗑️", completed: true },
+  { id: 3, name: "Select Skip", icon: "🚛", current: true },
+  { id: 4, name: "Permit Check", icon: "📋", completed: false },
+  { id: 5, name: "Choose Date", icon: "📅", completed: false },
+  { id: 6, name: "Payment", icon: "💳", completed: false },
+];
+
+const NavHeader = () => {
+  return (
+    <div className="bg-[#FFD700] border-b">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex items-center justify-between overflow-x-auto">
+          {steps.map((step, index) => (
+            <div key={step.id} className="flex items-center">
+              <div className="flex items-center">
+                <div
+                  className={`
+                    flex items-center justify-center w-10 h-10 rounded-full text-sm font-medium
+                    ${
+                      step.completed
+                        ? "bg-green-100 text-green-800 border-2 border-green-200"
+                        : step.current
+                        ? "bg-blue-100 text-blue-800 border-2 border-blue-200"
+                        : "bg-gray-100 text-gray-500 border-2 border-gray-200"
+                    }
+                  `}
+                >
+                  {step.completed ? <Check className="h-5 w-5" /> : step.icon}
+                </div>
+                <div className="ml-3 hidden sm:block">
+                  <p
+                    className={`text-sm font-medium ${
+                      step.current
+                        ? "text-blue-800"
+                        : step.completed
+                        ? "text-green-800"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    {step.name}
+                  </p>
+                </div>
+              </div>
+              {index < steps.length - 1 && (
+                <div className="hidden sm:block w-12 lg:w-20 mx-4">
+                  <div
+                    className={`h-0.5 ${
+                      step.completed ? "bg-green-200" : "bg-gray-200"
+                    }`}
+                  />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardButton } from './Button';
+import { ToggleSwitch } from './Button';
 const Cards = ({ size, price, days, allowed, onSelect, isSelected }) => {
   const sizeNumber = parseInt(size.split(' ')[0], 10);
   const imageSrc = sizeNumber >= 20 ? '/largeWaste.jpg' : '/waste.jpg';
@@ -27,7 +27,7 @@ const Cards = ({ size, price, days, allowed, onSelect, isSelected }) => {
             <p className="text-gray-400 text-xs sm:text-sm">{days} day hire period</p>
             
             <p className="text-base sm:text-lg font-semibold text-green-400">£{price}</p>
-            <CardButton onSelect={onSelect} isSelected={isSelected} />
+            <ToggleSwitch onSelect={onSelect} isSelected={isSelected} />
           </div>
         </div>
       </div>
@@ -36,3 +36,7 @@ const Cards = ({ size, price, days, allowed, onSelect, isSelected }) => {
 };
 
 export default Cards;
+
+
+
+
